@@ -25,6 +25,7 @@
     "baseUrl": "src"
   },
   "include": [
-    "src/**/*"
+    "src/**/*",
+    "craco.config.js",
   ]
 }
