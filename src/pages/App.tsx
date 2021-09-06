@@ -1,5 +1,5 @@
-import logo from 'logo.svg';
-import 'css/App.scss';
+import logo from '@images/logo.svg';
+import '@css/App.scss';
 
 const App: React.FC = () => (
   <div className="App">
