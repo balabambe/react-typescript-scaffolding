@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./src",
+    "paths": {
+      "@": ["./"],
+      "@/*": ["./*"],
+      "@assets": ["./assets"],
+      "@assets/*": ["./assets/*"],
+      "@images": ["./assets/images"],
+      "@images/*": ["./assets/images/*"],
+      "@css": ["./css"],
+      "@css/*": ["./css/*"],
+      "@pages": ["./pages"],
+      "@pages/*": ["./pages/*"],
+      "@components": ["./components"],
+      "@components/*": ["./components/*"],
+      "@layouts": ["./layouts"],
+      "@layouts/*": ["./layouts/*"],
+      "@definitions": ["./definitions"],
+      "@definitions/*": ["./definitions/*"],
+      "@utils": ["./utils"],
+      "@utils/*": ["./utils/*"]
+    }
+  }
+}
