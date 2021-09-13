@@ -1,10 +1,5 @@
+import React from 'react';
 import { RouteComponentProps } from 'react-router';
-
-import AuthLayout from '@layouts/Auth';
-import MainLayout from '@layouts/MainLayout';
-import App from '@pages/App';
-import Child from '@pages/Child';
-import GrandChild from '@pages/GrandChild';
 
 type TypeRoutes = {
   path: string;
@@ -19,25 +14,25 @@ type TypeRoutes = {
 
 const routes: TypeRoutes[] = [
   {
-    component: MainLayout,
+    component: React.lazy(() => import('@layouts/MainLayout')),
     path: '/',
     exact: true,
   },
   {
-    component: MainLayout,
+    component: React.lazy(() => import('@layouts/MainLayout')),
     path: '/app',
     routes: [
       {
         path: '/app',
-        component: App,
+        component: React.lazy(() => import('@pages/App')),
         routes: [
           {
             path: '/app/child/:id',
-            component: Child,
+            component: React.lazy(() => import('@pages/Child')),
             routes: [
               {
                 path: '/app/child/:id/grandchild',
-                component: GrandChild,
+                component: React.lazy(() => import('@pages/GrandChild')),
               },
             ],
           },
@@ -47,7 +42,7 @@ const routes: TypeRoutes[] = [
   },
   {
     path: '/login',
-    component: AuthLayout,
+    component: React.lazy(() => import('@layouts/Auth')),
   },
 ];
 

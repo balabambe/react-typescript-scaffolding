@@ -1,4 +1,4 @@
-import { StrictMode } from 'react';
+import { StrictMode, Suspense } from 'react';
 import { render } from 'react-dom';
 import { renderRoutes } from 'react-router-config';
 import { BrowserRouter, Switch } from 'react-router-dom';
@@ -10,9 +10,11 @@ import reportWebVitals from './reportWebVitals';
 render(
   <StrictMode>
     <BrowserRouter>
-      <Switch>
-        {renderRoutes(routes)}
-      </Switch>
+      <Suspense fallback={<div>Loading...</div>}>
+        <Switch>
+          {renderRoutes(routes)}
+        </Switch>
+      </Suspense>
     </BrowserRouter>
   </StrictMode>,
   document.getElementById('root')
