@@ -1,2 +1,2 @@
-const GrandChild: React.FC = () => <>GrandChild</>;
+const GrandChild: React.FC = () => <h1>GrandChild</h1>;
 export default GrandChild;
