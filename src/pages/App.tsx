@@ -1,19 +1,10 @@
-import { BrowserRouter, Switch } from 'react-router-dom';
+import React from 'react';
+import { renderRoutes, RouteConfigComponentProps } from 'react-router-config';
 
-import useRenderRoutes from '@router/render-routes';
-
-const App: React.FC = () => {
-  const renderRoutes = useRenderRoutes({
-    renderPath: '/',
-    genLayers: 1,
-  });
-  return (
-    <BrowserRouter>
-      <Switch>
-        {renderRoutes}
-      </Switch>
-    </BrowserRouter>
+const App: React.FC<RouteConfigComponentProps> = ({route}) =>  (
+    <>
+      <h1>Apppp</h1>
+      {renderRoutes(route?.routes)}
+    </>
   );
-};
-
 export default App;

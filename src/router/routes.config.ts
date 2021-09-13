@@ -3,34 +3,43 @@ import { RouteComponentProps } from 'react-router';
 import AuthLayout from '@layouts/Auth';
 import MainLayout from '@layouts/MainLayout';
 import App from '@pages/App';
+import Child from '@pages/Child';
+import GrandChild from '@pages/GrandChild';
 
 type TypeRoutes = {
-  path: string,
-  component: React.ComponentType<RouteComponentProps<any>> | React.ComponentType<any> | undefined,
-  exact?: boolean,
-  meta?: unknown,
-  children?: TypeRoutes[],
-}
+  path: string;
+  component:
+    | React.ComponentType<RouteComponentProps<any>>
+    | React.ComponentType<any>
+    | undefined;
+  exact?: boolean;
+  meta?: unknown;
+  routes?: TypeRoutes[];
+};
 
 const routes: TypeRoutes[] = [
   {
     component: MainLayout,
     path: '/',
     exact: true,
-    children: [
+  },
+  {
+    component: MainLayout,
+    path: '/app',
+    routes: [
       {
-        path: '/',
-        exact: true,
+        path: '/app',
         component: App,
-        meta: {},
-      },
-      {
-        path: 'child',
-        component: App,
-        children: [
+        routes: [
           {
-            path: 'grandchild',
-            component: App,
+            path: '/app/child/:id',
+            component: Child,
+            routes: [
+              {
+                path: '/app/child/:id/grandchild',
+                component: GrandChild,
+              },
+            ],
           },
         ],
       },
@@ -44,4 +53,3 @@ const routes: TypeRoutes[] = [
 
 export default routes;
 export type { TypeRoutes };
-

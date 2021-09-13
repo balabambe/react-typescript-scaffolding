@@ -1,12 +1,10 @@
 import React from 'react';
-import { RouteComponentProps } from 'react-router';
+import { renderRoutes, RouteConfigComponentProps } from 'react-router-config';
 
-const MainLayout: React.FC<RouteComponentProps> = ({match}) =>
-  // console.log(match, 'match');
-   (
+const MainLayout: React.FC<RouteConfigComponentProps> = ({route}) =>  (
     <>
-      MainLayout
-      Match URL: {match.url}
+      <h1>MainLayout</h1>
+      {renderRoutes(route?.routes)}
     </>
   )
 ;

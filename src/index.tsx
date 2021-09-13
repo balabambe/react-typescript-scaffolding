@@ -1,14 +1,19 @@
 import { StrictMode } from 'react';
 import { render } from 'react-dom';
+import { renderRoutes } from 'react-router-config';
+import { BrowserRouter, Switch } from 'react-router-dom';
 
-import '@css/index.scss';
-import App from '@pages/App';
+import routes from '@router/routes.config';
 
 import reportWebVitals from './reportWebVitals';
 
 render(
   <StrictMode>
-    <App />
+    <BrowserRouter>
+      <Switch>
+        {renderRoutes(routes)}
+      </Switch>
+    </BrowserRouter>
   </StrictMode>,
   document.getElementById('root')
 );
