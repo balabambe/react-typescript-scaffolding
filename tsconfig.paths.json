@@ -18,6 +18,8 @@
       "@layouts/*": ["./layouts/*"],
       "@definitions": ["./definitions"],
       "@definitions/*": ["./definitions/*"],
+      "@router": ["./router"],
+      "@router/*": ["./router/*"],
       "@utils": ["./utils"],
       "@utils/*": ["./utils/*"]
     }
