@@ -27,14 +27,20 @@ const routes: TypeRoutes[] = [
         component: React.lazy(() => import('@pages/App')),
         routes: [
           {
-            path: '/app/child/:id',
+            path: '/app/child',
             component: React.lazy(() => import('@pages/Child')),
             routes: [
               {
-                path: '/app/child/:id/grandchild',
-                component: React.lazy(() => import('@pages/GrandChild')),
+                path: '/app/child/:id',
+                component: React.lazy(() => import('@pages/Child')),
+                routes: [
+                  {
+                    path: '/app/child/:id/grandchild',
+                    component: React.lazy(() => import('@pages/GrandChild')),
+                  },
+                ],
               },
-            ],
+            ]
           },
         ],
       },
