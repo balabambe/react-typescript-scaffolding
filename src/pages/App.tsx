@@ -1,23 +1,19 @@
-import logo from '@images/logo.svg';
-import '@css/App.scss';
+import { BrowserRouter, Switch } from 'react-router-dom';
 
-const App: React.FC = () => (
-  <div className="App">
-    <header className="App-header">
-      <img alt="logo" className="App-logo" src={logo} />
-      <p>
-        Edit <code>src/App.tsx</code> and save to reload.
-      </p>
-      <a
-        className="App-link"
-        href="https://reactjs.org"
-        rel="noopener noreferrer"
-        target="_blank"
-      >
-        Learn React
-      </a>
-    </header>
-  </div>
-);
+import useRenderRoutes from '@router/render-routes';
+
+const App: React.FC = () => {
+  const renderRoutes = useRenderRoutes({
+    renderPath: '/',
+    genLayers: 1,
+  });
+  return (
+    <BrowserRouter>
+      <Switch>
+        {renderRoutes}
+      </Switch>
+    </BrowserRouter>
+  );
+};
 
 export default App;
