@@ -8,6 +8,7 @@ const App: React.FC<RouteConfigComponentProps> = ({route}) =>  {
     <>
       <h1>Child</h1>
       <div>params: {id}</div>
+      <div>meta: {route?.meta?.isMeta}</div>
       {renderRoutes(route?.routes)}
     </>
   );
