@@ -122,6 +122,7 @@ const routes: TypeRoutes[] = [
 ];
 
 /**
+ * ** Recursive function **
  * 這裡會處理每個子路由的 path 自動冠上父層的 path
  * 讓 react router config 可以順利讀取
  * @param currentRoute 子路由 route.routes 的內容
@@ -139,7 +140,7 @@ const combineRoutePath = (currentRoute: TypeRoutes[]): TypeRoutes[] =>
       }));
       return {
         ...route,
-        routes: combineRoutePath(childrensNewPath),
+        routes: combineRoutePath(childrensNewPath), // Recursive
       };
     }
     return route;
