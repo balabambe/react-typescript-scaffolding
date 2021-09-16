@@ -10,7 +10,8 @@ type TypeRoutes = {
   exact?: boolean;
   meta?: Record<string, unknown>;
   routes?: TypeRoutes[];
-  breadcrumbName?: string;
+  name?: string;
+  hideBreadcrumb?: boolean,
 };
 
 /**
@@ -24,29 +25,31 @@ const routes: TypeRoutes[] = [
     component: React.lazy(() => import('@layouts/MainLayout')),
     path: '/',
     exact: true,
-    breadcrumbName: 'Home',
+    name: 'Home',
   },
   {
     component: React.lazy(() => import('@layouts/MainLayout')),
-    path: '/app',
+    path: '/books',
+    hideBreadcrumb: true,
     routes: [
       {
         path: '',
         component: React.lazy(() => import('@pages/App')),
-        breadcrumbName: 'App',
+        name: 'App',
         routes: [
           {
             path: '/child',
             component: React.lazy(() => import('@pages/Child')),
-            breadcrumbName: 'Child',
+            name: 'Child',
             routes: [
               {
                 path: '/:id',
                 component: React.lazy(() => import('@pages/Child')),
+                hideBreadcrumb: true,
                 routes: [
                   {
                     path: '/grandchild',
-                    breadcrumbName: 'GrandChild',
+                    name: 'GrandChild',
                     component: React.lazy(() => import('@pages/GrandChild')),
                   },
                 ],
@@ -56,7 +59,7 @@ const routes: TypeRoutes[] = [
           {
             path: '/child2',
             component: React.lazy(() => import('@pages/Child')),
-            breadcrumbName: 'Child2',
+            name: 'Child2',
             meta: {
               isMeta: 'Hi',
             },
@@ -64,10 +67,11 @@ const routes: TypeRoutes[] = [
               {
                 path: '/:id',
                 component: React.lazy(() => import('@pages/Child')),
+                hideBreadcrumb: true,
                 routes: [
                   {
                     path: '/grandchild',
-                    breadcrumbName: 'GrandChild',
+                    name: 'GrandChild',
                     component: React.lazy(() => import('@pages/GrandChild')),
                   },
                 ],
@@ -80,25 +84,27 @@ const routes: TypeRoutes[] = [
   },
   {
     component: React.lazy(() => import('@layouts/MainLayout')),
-    path: '/app2',
+    path: '/electronics',
+    hideBreadcrumb: true,
     routes: [
       {
         path: '',
         component: React.lazy(() => import('@pages/App')),
-        breadcrumbName: 'App2',
+        name: 'App2',
         routes: [
           {
             path: '/child3',
             component: React.lazy(() => import('@pages/Child')),
-            breadcrumbName: 'Child3',
+            name: 'Child3',
             routes: [
               {
                 path: '/:id',
                 component: React.lazy(() => import('@pages/Child')),
+                hideBreadcrumb: true,
                 routes: [
                   {
                     path: '/grandchild4',
-                    breadcrumbName: 'GrandChild4',
+                    name: 'GrandChild4',
                     component: React.lazy(() => import('@pages/GrandChild')),
                   },
                 ],
@@ -108,15 +114,16 @@ const routes: TypeRoutes[] = [
           {
             path: '/child2',
             component: React.lazy(() => import('@pages/Child')),
-            breadcrumbName: 'Child2',
+            name: 'Child2',
             routes: [
               {
                 path: '/:id',
                 component: React.lazy(() => import('@pages/Child')),
+                hideBreadcrumb: true,
                 routes: [
                   {
                     path: '/grandchild',
-                    breadcrumbName: 'GrandChild',
+                    name: 'GrandChild',
                     component: React.lazy(() => import('@pages/GrandChild')),
                   },
                 ],
