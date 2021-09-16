@@ -10,6 +10,7 @@ type TypeRoutes = {
   exact?: boolean;
   meta?: Record<string, unknown>;
   routes?: TypeRoutes[];
+  breadcrumbName?: string;
 };
 
 /**
@@ -23,6 +24,7 @@ const routes: TypeRoutes[] = [
     component: React.lazy(() => import('@layouts/MainLayout')),
     path: '/',
     exact: true,
+    breadcrumbName: 'Home',
   },
   {
     component: React.lazy(() => import('@layouts/MainLayout')),
@@ -31,10 +33,12 @@ const routes: TypeRoutes[] = [
       {
         path: '',
         component: React.lazy(() => import('@pages/App')),
+        breadcrumbName: 'App',
         routes: [
           {
             path: '/child',
             component: React.lazy(() => import('@pages/Child')),
+            breadcrumbName: 'Child',
             routes: [
               {
                 path: '/:id',
@@ -42,6 +46,7 @@ const routes: TypeRoutes[] = [
                 routes: [
                   {
                     path: '/grandchild',
+                    breadcrumbName: 'GrandChild',
                     component: React.lazy(() => import('@pages/GrandChild')),
                   },
                 ],
@@ -51,6 +56,7 @@ const routes: TypeRoutes[] = [
           {
             path: '/child2',
             component: React.lazy(() => import('@pages/Child')),
+            breadcrumbName: 'Child2',
             meta: {
               isMeta: 'Hi',
             },
@@ -61,6 +67,7 @@ const routes: TypeRoutes[] = [
                 routes: [
                   {
                     path: '/grandchild',
+                    breadcrumbName: 'GrandChild',
                     component: React.lazy(() => import('@pages/GrandChild')),
                   },
                 ],
@@ -78,10 +85,12 @@ const routes: TypeRoutes[] = [
       {
         path: '',
         component: React.lazy(() => import('@pages/App')),
+        breadcrumbName: 'App2',
         routes: [
           {
             path: '/child3',
             component: React.lazy(() => import('@pages/Child')),
+            breadcrumbName: 'Child3',
             routes: [
               {
                 path: '/:id',
@@ -89,6 +98,7 @@ const routes: TypeRoutes[] = [
                 routes: [
                   {
                     path: '/grandchild4',
+                    breadcrumbName: 'GrandChild4',
                     component: React.lazy(() => import('@pages/GrandChild')),
                   },
                 ],
@@ -98,6 +108,7 @@ const routes: TypeRoutes[] = [
           {
             path: '/child2',
             component: React.lazy(() => import('@pages/Child')),
+            breadcrumbName: 'Child2',
             routes: [
               {
                 path: '/:id',
@@ -105,6 +116,7 @@ const routes: TypeRoutes[] = [
                 routes: [
                   {
                     path: '/grandchild',
+                    breadcrumbName: 'GrandChild',
                     component: React.lazy(() => import('@pages/GrandChild')),
                   },
                 ],
