@@ -1,4 +1,4 @@
-import routes, { TypeRoutes } from "./routes.config";
+import routes, { TypeRoutes } from "./router.config";
 
 /**
  * ** Recursive function **
