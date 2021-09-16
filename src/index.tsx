@@ -3,7 +3,7 @@ import { render } from 'react-dom';
 import { renderRoutes } from 'react-router-config';
 import { BrowserRouter, Switch } from 'react-router-dom';
 
-import routes from '@router/routes.config';
+import routes from '@router/router';
 
 import reportWebVitals from './reportWebVitals';
 
