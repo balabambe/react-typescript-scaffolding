@@ -1,6 +1,8 @@
 import React from 'react';
-import { renderRoutes, RouteConfigComponentProps } from 'react-router-config';
+import { RouteConfigComponentProps } from 'react-router-config';
 import { useParams } from 'react-router-dom';
+
+import RouterOutlet from '@components/RouterOutlet';
 
 const App: React.FC<RouteConfigComponentProps> = ({route}) =>  {
   const {id} = useParams<{id: string}>();
@@ -9,7 +11,7 @@ const App: React.FC<RouteConfigComponentProps> = ({route}) =>  {
       <h1>Child</h1>
       <div>params: {id}</div>
       <div>meta: {route?.meta?.isMeta}</div>
-      {renderRoutes(route?.routes)}
+      <RouterOutlet route={route} />
     </>
   );
 };
