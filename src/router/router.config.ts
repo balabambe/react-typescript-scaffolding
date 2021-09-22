@@ -12,12 +12,13 @@ type TypeRoutes = {
   routes?: TypeRoutes[];
   name?: string;
   hideBreadcrumb?: boolean,
+  hideNav?: boolean,
 };
 
 /**
  * 每一層子路由的 path 應該要完整填寫包含父層的 path
  * 但這樣寫實在太雞肋了，如果要把子路由搬到另一層去，path 都要一層一層重寫
- * 所以底下我寫了一個 function 自動把子路由的 path 前加上父層的 path
+ * 所以我在 router.ts 寫了一個 function 自動把子路由的 path 前加上父層的 path
  * 如果有要搬動子路由的需求就可以直接剪下貼上比較方便
  */
 const routes: TypeRoutes[] = [
@@ -30,12 +31,13 @@ const routes: TypeRoutes[] = [
   {
     component: React.lazy(() => import('@layouts/MainLayout')),
     path: '/books',
+    name: 'Books',
     hideBreadcrumb: true,
     routes: [
       {
         path: '',
-        component: React.lazy(() => import('@pages/App')),
-        name: 'App',
+        component: React.lazy(() => import('@pages/Books')),
+        name: 'Books',
         routes: [
           {
             path: '/child',
@@ -80,17 +82,23 @@ const routes: TypeRoutes[] = [
           },
         ],
       },
+      {
+        path: '/books2',
+        component: React.lazy(() => import('@pages/Books')),
+        name: 'Books2',
+      }
     ],
   },
   {
     component: React.lazy(() => import('@layouts/MainLayout')),
     path: '/electronics',
+    name: 'Electronics',
     hideBreadcrumb: true,
     routes: [
       {
         path: '',
-        component: React.lazy(() => import('@pages/App')),
-        name: 'App2',
+        component: React.lazy(() => import('@pages/Electronics')),
+        name: 'Electronics',
         routes: [
           {
             path: '/child3',
@@ -137,6 +145,7 @@ const routes: TypeRoutes[] = [
   {
     path: '/login',
     component: React.lazy(() => import('@layouts/Auth')),
+    hideNav: true,
   },
 ];
 
