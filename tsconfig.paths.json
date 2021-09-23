@@ -20,6 +20,8 @@
       "@definitions/*": ["./definitions/*"],
       "@router": ["./router"],
       "@router/*": ["./router/*"],
+      "@store": ["./store"],
+      "@store/*": ["./store/*"],
       "@utils": ["./utils"],
       "@utils/*": ["./utils/*"]
     }
