@@ -24,5 +24,7 @@ const Books: React.FC<RouteConfigComponentProps> = ({route}) =>  {
       <button onClick={() => clickme()} type="button">Click me!</button>
       <RouterOutlet route={route} />
     </>
-  );};
+  );
+};
+
 export default Books;
