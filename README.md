@@ -11,6 +11,7 @@
 - react-reddux 7.2
 - redux-thunk 2.3
 - redux-devtools-extension 2.13
+- axios 0.21
 - craco-alias 3.0
 - eslint airbnb typescript
 
