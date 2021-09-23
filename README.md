@@ -1,7 +1,7 @@
 # react-ts-prototype
 
 ## Tech Stack
-- create-react-app 4.0
+- create-react-app (react-scripts) 4.0
 - React 17
 - TypeScript 4
 - react-router 5.2

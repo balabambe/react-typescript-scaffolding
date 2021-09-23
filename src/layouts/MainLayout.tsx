@@ -9,6 +9,7 @@ const MainLayout: React.FC<RouteConfigComponentProps> = ({ route }) => (
   <>
     <Navbar renderSecondLevel />
     <h1>MainLayout</h1>
+    {process.env.REACT_APP_VERSION}
     <Breadcrumbs />
     <RouterOutlet route={route} />
   </>
