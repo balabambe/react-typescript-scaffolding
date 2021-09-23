@@ -1,21 +1,25 @@
 import { StrictMode, Suspense } from 'react';
 import { render } from 'react-dom';
+import { Provider } from 'react-redux';
 import { renderRoutes } from 'react-router-config';
 import { BrowserRouter, Switch } from 'react-router-dom';
 
 import routes from '@router/router';
+import store from '@store/index';
 
 import reportWebVitals from './reportWebVitals';
 
 render(
   <StrictMode>
-    <BrowserRouter>
-      <Suspense fallback={<div>Loading...</div>}>
-        <Switch>
-          {renderRoutes(routes)}
-        </Switch>
-      </Suspense>
-    </BrowserRouter>
+    <Provider store={store}>
+      <BrowserRouter>
+        <Suspense fallback={<div>Loading...</div>}>
+          <Switch>
+            {renderRoutes(routes)}
+          </Switch>
+        </Suspense>
+      </BrowserRouter>
+    </Provider>
   </StrictMode>,
   document.getElementById('root')
 );
