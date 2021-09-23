@@ -5,14 +5,17 @@ import { RouteConfigComponentProps } from 'react-router-config';
 import RouterOutlet from '@components/RouterOutlet';
 import { actions as appActions, selectors as appSelectors } from '@store/app';
 
-const Books: React.FC<RouteConfigComponentProps> = ({route}) =>  {
-  const selector = useSelector(appSelectors.getLoadingStatus);
+const { getLoadingStatus } = appSelectors;
+const { actionAppLoadingEnd, actionAppLoadingStart } = appActions;
+
+const Books: React.FC<RouteConfigComponentProps> = ({route}) => {
+  const selector = useSelector(getLoadingStatus);
   const dispatch = useDispatch();
   const clickme = () => {
     if (selector) {
-      dispatch(appActions.actionAppLoadingEnd());
+      dispatch(actionAppLoadingEnd());
     } else {
-      dispatch(appActions.actionAppLoadingStart());
+      dispatch(actionAppLoadingStart());
     }
   };
   return(
