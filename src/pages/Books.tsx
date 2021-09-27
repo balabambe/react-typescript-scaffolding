@@ -3,28 +3,36 @@ import { useDispatch, useSelector } from 'react-redux';
 import { RouteConfigComponentProps } from 'react-router-config';
 
 import RouterOutlet from '@components/RouterOutlet';
-import { actions as appActions, selectors as appSelectors } from '@store/app';
+import { selectors as appSelectors } from '@store/app';
+import { actions as postActions, selectors as postSelectors } from '@store/post';
 
 const { getLoadingStatus } = appSelectors;
-const { actionAppLoadingEnd, actionAppLoadingStart } = appActions;
+
+const { fetchPostItem } = postActions;
+const { getPostItem } = postSelectors;
 
 const Books: React.FC<RouteConfigComponentProps> = ({route}) => {
-  const selector = useSelector(getLoadingStatus);
+  const loadingIndicator = useSelector(getLoadingStatus);
+  const postItemSelector = useSelector(getPostItem);
   const dispatch = useDispatch();
   const clickme = () => {
-    if (selector) {
-      dispatch(actionAppLoadingEnd());
-    } else {
-      dispatch(actionAppLoadingStart());
-    }
+    dispatch(fetchPostItem());
   };
   return(
     <>
       <h1>Books</h1>
-      {selector && 'isLoading'}
-      {!selector && 'isNotLoading'}
       <br />
       <button onClick={() => clickme()} type="button">Click me!</button>
+      <span>{loadingIndicator && 'Fetching...'}</span>
+      <br />
+      {!!postItemSelector.id &&
+      <ul>
+        <li>id: {postItemSelector.id}</li>
+        <li>title: {postItemSelector.title}</li>
+        <li>userId: {postItemSelector.userId}</li>
+        <li>completed: {postItemSelector.body}</li>
+      </ul>
+      }
       <RouterOutlet route={route} />
     </>
   );
