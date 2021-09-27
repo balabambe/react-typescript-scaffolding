@@ -1,9 +1,27 @@
+
 import { actions as appActions } from '@store/app';
 import apiRequest from '@utils/axios';
 import { ThunkDispatch } from 'redux-thunk';
 
+export const fetchPostsList = () => ((dispatch: ThunkDispatch<any, any, any>): Promise<void> => {
+  const opts = {
+    method: 'get',
+    url: `${process.env.REACT_APP_API_URL}posts`,
+  };
+  dispatch(appActions.actionAppLoadingStart());
+  return apiRequest(opts).then((postLists) => {
+    const dispatchConst = {
+      type: 'POST_LISTS',
+      payload: { postLists },
+    };
+    dispatch(dispatchConst);
+  }).finally(() => {
+    dispatch(appActions.actionAppLoadingEnd());
+  });
+});
+
 export function fetchPostItem() {
-  return (dispatch: ThunkDispatch<unknown, unknown, any>): unknown => {
+  return (dispatch: ThunkDispatch<any, any, any>): Promise<void> => {
     const opts = {
       method: 'get',
       url: `${process.env.REACT_APP_API_URL}posts/1`,
@@ -11,7 +29,7 @@ export function fetchPostItem() {
     dispatch(appActions.actionAppLoadingStart());
     return apiRequest(opts).then((res) => {
       const dispatchData = {
-        type: 'APP_POST_ITEM',
+        type: 'POST_ITEM',
         payload: res,
       };
       dispatch(dispatchData);
@@ -20,5 +38,3 @@ export function fetchPostItem() {
     });
   };
 }
-
-export default {};

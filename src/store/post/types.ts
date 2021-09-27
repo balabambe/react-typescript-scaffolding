@@ -7,13 +7,15 @@ export interface IPostItem {
   title: string
   userId: number
   body: string
+  [key: string]: unknown
 }
 
 export interface IPostState {
   postItem: IPostItem
+  postLists: IPostItem[]
 }
 
-export type TypeActions = {
+export interface IPostActions<T> {
   type: string,
-  payload: IPostItem,
-}
+  payload: T,
+};

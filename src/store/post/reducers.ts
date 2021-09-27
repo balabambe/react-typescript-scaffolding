@@ -1,6 +1,7 @@
-import { IPostState, TypeActions } from './types';
+import { IPostActions, IPostState } from './types';
 
 const initialState: IPostState = {
+  postLists: [],
   postItem: {
     id: 0,
     title: '',
@@ -9,12 +10,17 @@ const initialState: IPostState = {
   },
 };
 
-export default (state = initialState, action: TypeActions): IPostState => {
+export default (state = initialState, action: IPostActions<IPostState>): IPostState => {
   switch (action.type) {
-    case 'APP_POST_ITEM':
+    case 'POST_LISTS':
       return {
         ...state,
-        postItem: action.payload,
+        postLists: action.payload.postLists,
+      };
+    case 'POST_ITEM':
+      return {
+        ...state,
+        postItem: action.payload.postItem,
       };
     default:
       return state;

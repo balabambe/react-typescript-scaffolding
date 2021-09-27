@@ -8,36 +8,30 @@ import { actions as postActions, selectors as postSelectors } from '@store/post'
 
 const { getLoadingStatus } = appSelectors;
 
-const { fetchPostsList } = postActions;
-const { postLists } = postSelectors;
+const { fetchPostItem } = postActions;
+const { getPostItem } = postSelectors;
 
 const Books: React.FC<RouteConfigComponentProps> = ({route}) => {
   const loadingIndicator = useSelector(getLoadingStatus);
-  const postListSelector = useSelector(postLists);
+  const postItemSelector = useSelector(getPostItem);
   const dispatch = useDispatch();
   const clickme = () => {
-    dispatch(fetchPostsList());
+    dispatch(fetchPostItem());
   };
   return(
     <>
-      <h1>Posts</h1>
+      <h1>Books</h1>
       <br />
-      <button onClick={() => clickme()} type="button">Fetch Posts</button>
+      <button onClick={() => clickme()} type="button">Click me!</button>
       <span>{loadingIndicator && 'Fetching...'}</span>
       <br />
-      {!!postListSelector.length &&
-      <ol>
-        {postListSelector.map((post) =>
-        <li key={post.id}>
-          <ul>
-            {Object.keys(post).map((item) =>
-            <li key={item}>
-              {item}: {post[item]}
-            </li>)}
-          </ul>
-        </li>
-        )}
-      </ol>
+      {!!postItemSelector.id &&
+      <ul>
+        <li>id: {postItemSelector.id}</li>
+        <li>title: {postItemSelector.title}</li>
+        <li>userId: {postItemSelector.userId}</li>
+        <li>completed: {postItemSelector.body}</li>
+      </ul>
       }
       <RouterOutlet route={route} />
     </>
