@@ -30,14 +30,14 @@ const routes: TypeRoutes[] = [
   },
   {
     component: React.lazy(() => import('@layouts/MainLayout')),
-    path: '/books',
-    name: 'Books',
+    path: '/posts',
+    name: 'Posts',
     hideBreadcrumb: true,
     routes: [
       {
         path: '',
-        component: React.lazy(() => import('@pages/Books')),
-        name: 'Books',
+        component: React.lazy(() => import('@pages/Posts')),
+        name: 'Posts',
         routes: [
           {
             path: '/child',
@@ -84,7 +84,7 @@ const routes: TypeRoutes[] = [
       },
       {
         path: '/books2',
-        component: React.lazy(() => import('@pages/Books')),
+        component: React.lazy(() => import('@pages/Posts')),
         name: 'Books2',
       }
     ],

@@ -11,7 +11,7 @@ const { getLoadingStatus } = appSelectors;
 const { fetchPostsList } = postActions;
 const { postLists } = postSelectors;
 
-const Books: React.FC<RouteConfigComponentProps> = ({route}) => {
+const Posts: React.FC<RouteConfigComponentProps> = ({route}) => {
   const loadingIndicator = useSelector(getLoadingStatus);
   const postListSelector = useSelector(postLists);
   const dispatch = useDispatch();
@@ -44,4 +44,4 @@ const Books: React.FC<RouteConfigComponentProps> = ({route}) => {
   );
 };
 
-export default Books;
+export default Posts;
