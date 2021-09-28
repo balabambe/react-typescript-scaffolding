@@ -9,6 +9,8 @@ import store from '@store/index';
 
 import reportWebVitals from './reportWebVitals';
 
+import './index.css';
+
 render(
   <StrictMode>
     <Provider store={store}>
