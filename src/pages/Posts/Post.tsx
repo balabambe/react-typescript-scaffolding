@@ -16,7 +16,7 @@ const Books: React.FC<RouteConfigComponentProps> = () => {
 
   const loadingIndicator = useSelector(getLoadingStatus);
   const postItemSelector = useSelector(getPostItem);
-  console.log(postItemSelector, 'asdf');
+
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchPostItem(id));
