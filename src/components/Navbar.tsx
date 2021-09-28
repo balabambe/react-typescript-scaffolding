@@ -17,13 +17,10 @@ const Navbar: React.FC<TypeNavBar> = ({renderSecondLevel}) => {
               <NavLink to={item.path}>{item.name}</NavLink>
               {item?.routes && renderSecondLevel && <>
                 <ul>
-                  {item.routes.map((second) => {
-                    const secondChild = second.path === item.path ? second.routes?.[0] : second;
-                    return (secondChild &&
-                    <li key={secondChild.path}>
-                      <NavLink to={secondChild.path}>{secondChild.name}</NavLink>
-                    </li>);
-                  })}
+                  {item.routes.map((second) => (second &&
+                    <li key={second.path}>
+                      <NavLink to={second.path}>{second.name}</NavLink>
+                    </li>))}
                 </ul>
               </>}
             </li>
