@@ -16,7 +16,7 @@ const Posts: React.FC<RouteConfigComponentProps> = ({route}) => {
   const loadingIndicator = useSelector(getLoadingStatus);
   const postListSelector = useSelector(postLists);
   const dispatch = useDispatch();
-  const clickme = () => {
+  const fetchPosts = () => {
     dispatch(fetchPostsList());
   };
 
@@ -26,7 +26,7 @@ const Posts: React.FC<RouteConfigComponentProps> = ({route}) => {
   return(
     <>
       <h1>Posts</h1>
-      <button onClick={() => clickme()} type="button">Fetch Posts</button>
+      <button onClick={() => fetchPosts()} type="button">Fetch Posts</button>
       <br />
       <br />
       <span>{loadingIndicator && 'Fetching...'}</span>
