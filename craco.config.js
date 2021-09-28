@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 /* craco.config.js */
 const CracoAlias = require("craco-alias");
+const CracoScopedCss = require('craco-plugin-scoped-css');
 
 module.exports = {
   plugins: [
@@ -14,6 +15,9 @@ module.exports = {
         // tsConfigPath should point to the file where "baseUrl" and "paths" are specified
         tsConfigPath: "./tsconfig.paths.json"
       }
-    }
+    },
+    {
+      plugin: CracoScopedCss,
+    },
   ]
 };
