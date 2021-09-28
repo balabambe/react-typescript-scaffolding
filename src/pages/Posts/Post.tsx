@@ -6,6 +6,8 @@ import { useParams } from 'react-router-dom';
 import { selectors as appSelectors } from '@store/app';
 import { actions as postActions, selectors as postSelectors } from '@store/post';
 
+import './Post.scoped.scss';
+
 const { getLoadingStatus } = appSelectors;
 
 const { fetchPostItem } = postActions;
@@ -26,10 +28,10 @@ const Books: React.FC<RouteConfigComponentProps> = () => {
       <span>{loadingIndicator && 'Fetching...'}</span>
       {!!postItemSelector &&
       <ul>
-        <li>id: {postItemSelector.id}</li>
-        <li>title: {postItemSelector.title}</li>
-        <li>userId: {postItemSelector.userId}</li>
-        <li>body: {postItemSelector.body}</li>
+        <li className="post">id: {postItemSelector.id}</li>
+        <li className="post">title: {postItemSelector.title}</li>
+        <li className="post">userId: {postItemSelector.userId}</li>
+        <li className="post">body: {postItemSelector.body}</li>
       </ul>
       }
     </>
