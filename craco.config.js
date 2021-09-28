@@ -1,7 +1,9 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 /* craco.config.js */
+const autoprefixer = require('autoprefixer');
 const CracoAlias = require("craco-alias");
 const CracoScopedCss = require('craco-plugin-scoped-css');
+const tailwindcss = require('tailwindcss');
 
 module.exports = {
   plugins: [
@@ -19,5 +21,13 @@ module.exports = {
     {
       plugin: CracoScopedCss,
     },
-  ]
+  ],
+  style: {
+    postcss: {
+      plugins: [
+        tailwindcss,
+        autoprefixer,
+      ],
+    },
+  },
 };
