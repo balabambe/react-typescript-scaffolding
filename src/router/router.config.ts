@@ -36,19 +36,26 @@ const routes: TypeRoutes[] = [
     routes: [
       {
         path: '',
-        component: React.lazy(() => import('@pages/Posts')),
+        component: React.lazy(() => import('@pages/Posts/index')),
         name: 'Posts',
         routes: [
           {
+            path: '',
+            component: React.lazy(() => import('@pages/Posts/Posts')),
+            exact: true,
+            hideBreadcrumb: true,
+            name: 'Posts',
+          },
+          {
             path: '/:id',
-            component: React.lazy(() => import('@pages/Post')),
+            component: React.lazy(() => import('@pages/Posts/Post')),
             name: 'Post',
           },
-        ],
+        ]
       },
       {
         path: '/articles',
-        component: React.lazy(() => import('@pages/Posts')),
+        component: React.lazy(() => import('@pages/Posts/Posts')),
         name: 'My Articles',
       }
     ],
