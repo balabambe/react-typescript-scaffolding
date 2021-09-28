@@ -20,17 +20,17 @@ export const fetchPostsList = () => ((dispatch: ThunkDispatch<any, any, any>): P
   });
 });
 
-export function fetchPostItem() {
+export function fetchPostItem(id: string) {
   return (dispatch: ThunkDispatch<any, any, any>): Promise<void> => {
     const opts = {
       method: 'get',
-      url: `${process.env.REACT_APP_API_URL}posts/1`,
+      url: `${process.env.REACT_APP_API_URL}posts/${id}`,
     };
     dispatch(appActions.actionAppLoadingStart());
-    return apiRequest(opts).then((res) => {
+    return apiRequest(opts).then((postItem) => {
       const dispatchData = {
         type: 'POST_ITEM',
-        payload: res,
+        payload: { postItem },
       };
       dispatch(dispatchData);
     }).finally(() => {
