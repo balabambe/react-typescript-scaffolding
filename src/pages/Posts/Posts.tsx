@@ -25,7 +25,7 @@ const Posts: React.FC<RouteConfigComponentProps> = ({route}) => {
   }, [dispatch]);
   return(
     <>
-      <h1>Posts</h1>
+      <h1 className='bg-black text-white'>Posts</h1>
       <button onClick={() => fetchPosts()} type="button">Fetch Posts</button>
       <br />
       <br />
