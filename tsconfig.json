@@ -27,6 +27,7 @@
   },
   "include": [
     "src/**/*",
-    "craco.config.js"
+    "craco.config.js",
+    "tailwind.config.js"
   ]
 }
