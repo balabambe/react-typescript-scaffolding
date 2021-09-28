@@ -40,52 +40,16 @@ const routes: TypeRoutes[] = [
         name: 'Posts',
         routes: [
           {
-            path: '/child',
-            component: React.lazy(() => import('@pages/Child')),
-            name: 'Child',
-            routes: [
-              {
-                path: '/:id',
-                component: React.lazy(() => import('@pages/Child')),
-                hideBreadcrumb: true,
-                routes: [
-                  {
-                    path: '/grandchild',
-                    name: 'GrandChild',
-                    component: React.lazy(() => import('@pages/GrandChild')),
-                  },
-                ],
-              },
-            ],
-          },
-          {
-            path: '/child2',
-            component: React.lazy(() => import('@pages/Child')),
-            name: 'Child2',
-            meta: {
-              isMeta: 'Hi',
-            },
-            routes: [
-              {
-                path: '/:id',
-                component: React.lazy(() => import('@pages/Child')),
-                hideBreadcrumb: true,
-                routes: [
-                  {
-                    path: '/grandchild',
-                    name: 'GrandChild',
-                    component: React.lazy(() => import('@pages/GrandChild')),
-                  },
-                ],
-              },
-            ],
+            path: '/:id',
+            component: React.lazy(() => import('@pages/Post')),
+            name: 'Post',
           },
         ],
       },
       {
-        path: '/books2',
+        path: '/articles',
         component: React.lazy(() => import('@pages/Posts')),
-        name: 'Books2',
+        name: 'My Articles',
       }
     ],
   },
