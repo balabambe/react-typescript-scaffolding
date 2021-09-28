@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { RouteConfigComponentProps } from 'react-router-config';
+import { Link } from 'react-router-dom';
 
 import RouterOutlet from '@components/RouterOutlet';
 import { selectors as appSelectors } from '@store/app';
@@ -18,23 +19,23 @@ const Posts: React.FC<RouteConfigComponentProps> = ({route}) => {
   const clickme = () => {
     dispatch(fetchPostsList());
   };
+
+  useEffect(() => {
+    dispatch(fetchPostsList());
+  }, [dispatch]);
   return(
     <>
       <h1>Posts</h1>
-      <br />
       <button onClick={() => clickme()} type="button">Fetch Posts</button>
+      <br />
+      <br />
       <span>{loadingIndicator && 'Fetching...'}</span>
       <br />
       {!!postListSelector.length &&
       <ol>
         {postListSelector.map((post) =>
         <li key={post.id}>
-          <ul>
-            {Object.keys(post).map((item) =>
-            <li key={item}>
-              {item}: {post[item]}
-            </li>)}
-          </ul>
+          <Link to={`${route?.path}/${post.id}`}>{post.title}</Link>
         </li>
         )}
       </ol>
