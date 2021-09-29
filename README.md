@@ -16,6 +16,8 @@
 - craco-plugin-scoped-css 1.1
 - tailwindcss 2.2
 - eslint airbnb typescript
+- sass (dart-sass)
+- fontawesome
 
 ## Specials
 I have made for custom router-outlet by react-router-config and react-router-dom, you can just import and put the `<RouterOutlet>` component by render sub route to show sub pages.
