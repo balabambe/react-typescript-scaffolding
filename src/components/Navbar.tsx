@@ -10,13 +10,13 @@ type TypeNavBar = {
 const Navbar: React.FC<TypeNavBar> = ({renderSecondLevel}) => {
   const filter = routes.filter((route) => !route.hideNav);
   return (
-    <>
-      <ul className="navbar">
+    <nav className="navbar">
+      <ul className="parent">
         {filter.map((item) => (
             <li key={item.path}>
               <NavLink to={item.path}>{item.name}</NavLink>
               {item?.routes && renderSecondLevel && <>
-                <ul>
+                <ul className="child">
                   {item.routes.map((second) => (second &&
                     <li key={second.path}>
                       <NavLink to={second.path}>{second.name}</NavLink>
@@ -26,7 +26,7 @@ const Navbar: React.FC<TypeNavBar> = ({renderSecondLevel}) => {
             </li>
           ))}
       </ul>
-    </>
+    </nav>
   );
 };
 

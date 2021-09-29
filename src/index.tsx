@@ -4,12 +4,16 @@ import { Provider } from 'react-redux';
 import { renderRoutes } from 'react-router-config';
 import { BrowserRouter, Switch } from 'react-router-dom';
 
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { fas } from '@fortawesome/free-solid-svg-icons';
 import routes from '@router/router';
 import store from '@store/index';
 
 import reportWebVitals from './reportWebVitals';
 
-import './index.css';
+import '@css/index.scss';
+
+library.add(fas);
 
 render(
   <StrictMode>
