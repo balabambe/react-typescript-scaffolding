@@ -1,7 +1,10 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
+import Icons from '@components/Icons';
 import routes from '@router/router';
+
+import '@css/Navbar.scoped.scss';
 
 type TypeNavBar = {
   renderSecondLevel?: boolean,
@@ -14,6 +17,7 @@ const Navbar: React.FC<TypeNavBar> = ({renderSecondLevel}) => {
       <ul className="parent">
         {filter.map((item) => (
             <li key={item.path}>
+              {item.icon && <Icons iconString={item.icon?.iconName} />}
               <NavLink to={item.path}>{item.name}</NavLink>
               {item?.routes && renderSecondLevel && <>
                 <ul className="child">
