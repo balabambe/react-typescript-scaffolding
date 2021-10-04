@@ -11,7 +11,7 @@ import store from '@store/index';
 
 import reportWebVitals from './reportWebVitals';
 
-import '@css/index.scss';
+import './index.scss';
 
 library.add(fas);
 

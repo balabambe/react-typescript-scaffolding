@@ -6,7 +6,7 @@ import Icons from '@components/Icons';
 import Navbar from '@components/Navbar';
 import RouterOutlet from '@components/RouterOutlet';
 
-import '@css/MainLayout.scoped.scss';
+import './MainLayout.scoped.scss';
 
 const MainLayout: React.FC<RouteConfigComponentProps> = ({ route }) => (
   <>

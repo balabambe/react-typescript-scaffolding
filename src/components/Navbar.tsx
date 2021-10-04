@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 import Icons from '@components/Icons';
 import routes from '@router/router';
 
-import '@css/Navbar.scoped.scss';
+import './Navbar.scoped.scss';
 
 type TypeNavBar = {
   renderSecondLevel?: boolean,
