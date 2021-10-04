@@ -2,21 +2,18 @@ import React from 'react';
 import { RouteConfigComponentProps } from 'react-router-config';
 
 import Breadcrumbs from '@components/Breadcrumbs';
+import Icons from '@components/Icons';
 import Navbar from '@components/Navbar';
 import RouterOutlet from '@components/RouterOutlet';
-import { findIconDefinition } from '@fortawesome/fontawesome-svg-core';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import '@css/MainLayout.scoped.scss';
-
-const signOutIcon = findIconDefinition({prefix: 'fas', iconName: 'sign-out-alt'});
 
 const MainLayout: React.FC<RouteConfigComponentProps> = ({ route }) => (
   <>
     <header>
       <div className="user-block">
         <button className="logout" type="button">
-          <FontAwesomeIcon color="#666" icon={signOutIcon} />
+          <Icons iconString="sign-out-alt" />
           <span>Logout</span>
         </button>
       </div>
