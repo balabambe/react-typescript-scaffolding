@@ -1,6 +1,8 @@
 import React from 'react';
 import { RouteComponentProps } from 'react-router';
 
+import { iconElectrics, iconHome, IconObject, iconPosts } from '@components/Icons';
+
 type TypeRoutes = {
   path: string;
   component:
@@ -13,6 +15,7 @@ type TypeRoutes = {
   name?: string;
   hideBreadcrumb?: boolean,
   hideNav?: boolean,
+  icon?: IconObject,
 };
 
 /**
@@ -27,17 +30,20 @@ const routes: TypeRoutes[] = [
     path: '/',
     exact: true,
     name: 'Home',
+    icon: iconHome,
   },
   {
     component: React.lazy(() => import('@layouts/MainLayout')),
     path: '/posts',
     name: 'Posts',
     hideBreadcrumb: true,
+    icon: iconPosts,
     routes: [
       {
         path: '',
         component: React.lazy(() => import('@pages/Posts/index')),
         name: 'Posts',
+        icon: iconPosts,
         routes: [
           {
             path: '',
@@ -65,6 +71,7 @@ const routes: TypeRoutes[] = [
     path: '/electronics',
     name: 'Electronics',
     hideBreadcrumb: true,
+    icon: iconElectrics,
     routes: [
       {
         path: '',
