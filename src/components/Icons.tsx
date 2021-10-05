@@ -1,4 +1,4 @@
-import { findIconDefinition, IconName, IconPrefix, IconProp } from '@fortawesome/fontawesome-svg-core';
+import { findIconDefinition, IconName, IconPrefix } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon, FontAwesomeIconProps } from '@fortawesome/react-fontawesome';
 
 export type IconObject = {
@@ -6,12 +6,11 @@ export type IconObject = {
   iconPrefix?: IconPrefix,
 }
 
-export const iconHome: IconObject = {iconName: 'home'};
+export const iconHome: IconObject = { iconName: 'home' };
 export const iconPosts: IconObject = { iconName: 'newspaper', iconPrefix: 'far'};
 export const iconElectrics: IconObject = { iconName: 'bolt' };
 
-interface TypeIconProps extends Omit<FontAwesomeIconProps, 'icon'> {
-  icon?: IconProp,
+interface TypeIconProps extends Partial<FontAwesomeIconProps> {
   iconString: IconName,
   iconPrefix?: IconPrefix,
 }
