@@ -25,4 +25,5 @@ const combineRoutePath = (currentRoute: TypeRoutes[]): TypeRoutes[] =>
     return route;
   });
 
+export type { TypeRoutes };
 export default combineRoutePath(routes);
