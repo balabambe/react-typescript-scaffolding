@@ -9,7 +9,7 @@ import RouterOutlet from '@components/RouterOutlet';
 import './MainLayout.scoped.scss';
 
 const MainLayout: React.FC<RouteConfigComponentProps> = ({ route }) => (
-  <>
+  <div className="wrapper">
     <header>
       <div className="user-block">
         <button className="logout" type="button">
@@ -28,6 +28,6 @@ const MainLayout: React.FC<RouteConfigComponentProps> = ({ route }) => (
         <RouterOutlet route={route} />
       </section>
     </main>
-  </>
+  </div>
 );
 export default MainLayout;

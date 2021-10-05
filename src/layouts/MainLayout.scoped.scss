@@ -1,9 +1,13 @@
+
+.wrapper {
+  background-color: #402e75;
+}
+
 main {
   display: flex;
   min-height: calc(100vh - 58px);
   aside {
     flex-basis: 250px;
-    background-color: #402e75;
   }
   section {
     flex-grow: 1;
@@ -15,7 +19,6 @@ header {
   justify-content: space-between;
   align-items: center;
   padding: 10px 25px;
-  background-color: #402e75;
   &::before {
     content: "";
     display: block;
@@ -42,11 +45,16 @@ header {
 
 aside {
   color: #666;
-  border-right: 1px solid #ccc;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   p {
     text-align: center;
   }
+}
+
+.content {
+  padding: 25px;
+  background-color: white;
+  border-top-left-radius: 25px;
 }
