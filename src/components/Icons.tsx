@@ -1,5 +1,5 @@
-import { findIconDefinition, IconName, IconPrefix } from '@fortawesome/fontawesome-svg-core';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { findIconDefinition, IconName, IconPrefix, IconProp } from '@fortawesome/fontawesome-svg-core';
+import { FontAwesomeIcon, FontAwesomeIconProps } from '@fortawesome/react-fontawesome';
 
 export type IconObject = {
   iconName: IconName,
@@ -10,15 +10,16 @@ export const iconHome: IconObject = {iconName: 'home'};
 export const iconPosts: IconObject = { iconName: 'newspaper', iconPrefix: 'far'};
 export const iconElectrics: IconObject = { iconName: 'bolt' };
 
-type TypeIconProps = {
+interface TypeIconProps extends Omit<FontAwesomeIconProps, 'icon'> {
+  icon?: IconProp,
   iconString: IconName,
-  color?: string,
   iconPrefix?: IconPrefix,
 }
 
-const Icons: React.FC<TypeIconProps> = ({color = '#666', iconString, iconPrefix = 'fas'}) => {
-  const getIcon = findIconDefinition({prefix: iconPrefix, iconName: iconString});
-  return <FontAwesomeIcon color={color} icon={getIcon} />;
+const Icons: React.FC<TypeIconProps> = (props) => {
+  const {color = '#666', iconString, iconPrefix = 'fas', ...rest} = props;
+  const findIcon = findIconDefinition({prefix: iconPrefix, iconName: iconString});
+  return <FontAwesomeIcon color={color} icon={findIcon} {...rest} />;
 };
 
 export default Icons;
