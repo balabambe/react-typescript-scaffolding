@@ -1,0 +1,32 @@
+.navbar {
+  .parent {
+    > li {
+      > a, p {
+        display: flex;
+        align-items: center;
+        flex-grow: 1;
+        font-size: 22px;
+        i {
+          width: 26px;
+          flex-shrink: 0;
+          text-align: center;
+          padding: 12px;
+          box-sizing: content-box;
+        }
+      }
+    }
+  }
+  .child {
+    flex-basis: 100%;
+    li {
+      margin-bottom: 15px;
+    }
+    a {
+      display: block;
+      padding-left: 50px;
+    }
+  }
+  li {
+    color: white;
+  }
+}
