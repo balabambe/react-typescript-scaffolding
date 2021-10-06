@@ -8,12 +8,12 @@ import axios, {
 } from 'axios';
 import { ThunkDispatch } from 'redux-thunk';
 
-interface IApiRequest {
+interface IApiCaller {
   opts: AxiosRequestConfig;
   headers?: any;
   dispatch: ThunkDispatch<any, any, any>;
-  loading?: boolean,
-  [key: string]: any,
+  loading?: boolean;
+  [key: string]: any;
 }
 
 const axiosInstance = axios.create({
@@ -22,7 +22,7 @@ const axiosInstance = axios.create({
   withCredentials: false,
 });
 
-const touchAxios = (opts = {}, headers = {}): AxiosPromise =>
+const createAxiosRequest = (opts = {}, headers = {}): AxiosPromise =>
   axiosInstance.request({
     headers: {
       'Content-Type': 'application/json',
@@ -32,17 +32,17 @@ const touchAxios = (opts = {}, headers = {}): AxiosPromise =>
     ...opts,
   });
 
-const apiRequest = ({
+const apiCaller = ({
   opts = {},
   headers = {},
   dispatch,
   ...rest
-}: IApiRequest): AxiosPromise => {
+}: IApiCaller): AxiosPromise => {
   const { loading = true } = rest;
   if (loading) {
     dispatch(appActions.actionAppLoadingStart());
   }
-  return touchAxios(opts, headers).finally(() => {
+  return createAxiosRequest(opts, headers).finally(() => {
     if (loading) {
       dispatch(appActions.actionAppLoadingEnd());
     }
@@ -74,4 +74,4 @@ axiosInstance.interceptors.response.use(
 );
 
 export type { Method };
-export default apiRequest;
+export default apiCaller;
