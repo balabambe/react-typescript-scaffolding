@@ -1,21 +1,21 @@
 export interface IPostStore {
-  post: IPostState
+  post: IPostState;
 }
 
 export interface IPostItem {
-  id: number
-  title: string
-  userId: number
-  body: string
-  [key: string]: unknown
+  id: number;
+  title: string;
+  userId: number;
+  body: string;
+  [key: string]: unknown;
 }
 
 export interface IPostState {
-  postItem: IPostItem
-  postLists: IPostItem[]
+  postItem: IPostItem;
+  postLists: IPostItem[];
 }
 
 export interface IPostActions<T> {
-  type: string,
-  payload: T,
-};
+  type: string;
+  payload: T;
+}
