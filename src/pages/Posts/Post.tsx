@@ -23,16 +23,15 @@ const Books: React.FC<RouteConfigComponentProps> = () => {
   useEffect(() => {
     dispatch(fetchPostItem(id));
   }, [dispatch, id]);
+
   return(
     <>
       <span>{loadingIndicator && 'Fetching...'}</span>
       {!!postItemSelector.id &&
-      <ul>
-        <li className="post">id: {postItemSelector.id}</li>
-        <li className="post">title: {postItemSelector.title}</li>
-        <li className="post">userId: {postItemSelector.userId}</li>
-        <li className="post">body: {postItemSelector.body}</li>
-      </ul>
+      <>
+        <h3>{postItemSelector.title}</h3>
+        <article>{postItemSelector.body}</article>
+      </>
       }
     </>
   );
