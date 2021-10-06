@@ -17,10 +17,20 @@ export default (state = initialState, action: IPostActions<IPostState>): IPostSt
         ...state,
         postLists: action.payload.postLists,
       };
+    case 'CLEAR_POST_LISTS':
+      return {
+        ...state,
+        postLists: [],
+      };
     case 'POST_ITEM':
       return {
         ...state,
         postItem: action.payload.postItem,
+      };
+    case 'CLEAR_POST_ITEM':
+      return {
+        ...state,
+        postItem: initialState.postItem,
       };
     default:
       return state;
