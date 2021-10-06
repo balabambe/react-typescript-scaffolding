@@ -23,11 +23,11 @@ const Posts: React.FC<RouteConfigComponentProps> = ({route}) => {
   useEffect(() => {
     dispatch(fetchPostsList());
   }, [dispatch]);
+  
   return(
     <>
-      <h1 className='bg-black text-white'>Posts</h1>
-      <button onClick={() => fetchPosts()} type="button">Fetch Posts</button>
-      <br />
+      <h1>Posts</h1>
+      <button className="btn primary" onClick={() => fetchPosts()} type="button">Fetch Posts</button>
       <br />
       <span>{loadingIndicator && 'Fetching...'}</span>
       <br />
