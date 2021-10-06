@@ -1,4 +1,20 @@
-import axios, { AxiosError, AxiosPromise, AxiosRequestConfig, AxiosResponse } from 'axios';
+import { actions as appActions } from '@store/app';
+import axios, {
+  AxiosError,
+  AxiosPromise,
+  AxiosRequestConfig,
+  AxiosResponse,
+  Method,
+} from 'axios';
+import { ThunkDispatch } from 'redux-thunk';
+
+interface IApiRequest {
+  opts: AxiosRequestConfig;
+  headers?: any;
+  dispatch: ThunkDispatch<any, any, any>;
+  loading?: boolean,
+  [key: string]: any,
+}
 
 const axiosInstance = axios.create({
   baseURL: process.env.REACT_APP_API_URL,
@@ -6,7 +22,7 @@ const axiosInstance = axios.create({
   withCredentials: false,
 });
 
-const apiRequest = (opts = {}, headers = {}): AxiosPromise =>
+const touchAxios = (opts = {}, headers = {}): AxiosPromise =>
   axiosInstance.request({
     headers: {
       'Content-Type': 'application/json',
@@ -15,6 +31,23 @@ const apiRequest = (opts = {}, headers = {}): AxiosPromise =>
     },
     ...opts,
   });
+
+const apiRequest = ({
+  opts = {},
+  headers = {},
+  dispatch,
+  ...rest
+}: IApiRequest): AxiosPromise => {
+  const { loading = true } = rest;
+  if (loading) {
+    dispatch(appActions.actionAppLoadingStart());
+  }
+  return touchAxios(opts, headers).finally(() => {
+    if (loading) {
+      dispatch(appActions.actionAppLoadingEnd());
+    }
+  });
+};
 
 axiosInstance.interceptors.request.use(
   (config: AxiosRequestConfig) => {
@@ -40,4 +73,5 @@ axiosInstance.interceptors.response.use(
   }
 );
 
+export type { Method };
 export default apiRequest;
