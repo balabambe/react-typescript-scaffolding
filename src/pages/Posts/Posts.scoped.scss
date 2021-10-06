@@ -1,0 +1,20 @@
+.article-lists {
+  li {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #ccc;
+    padding: 5px 10px;
+    &::before {
+      content: "";
+      display: block;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background-color: green;
+      margin-right: 1em;
+    }
+    a {
+      flex-grow: 1;
+    }
+  }
+}

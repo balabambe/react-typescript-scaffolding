@@ -7,6 +7,8 @@ import RouterOutlet from '@components/RouterOutlet';
 import { selectors as appSelectors } from '@store/app';
 import { actions as postActions, selectors as postSelectors } from '@store/post';
 
+import './Posts.scoped.scss';
+
 const { getLoadingStatus } = appSelectors;
 
 const { fetchPostsList } = postActions;
@@ -16,6 +18,7 @@ const Posts: React.FC<RouteConfigComponentProps> = ({route}) => {
   const loadingIndicator = useSelector(getLoadingStatus);
   const postListSelector = useSelector(postLists);
   const dispatch = useDispatch();
+
   const fetchPosts = () => {
     dispatch(fetchPostsList());
   };
@@ -23,7 +26,7 @@ const Posts: React.FC<RouteConfigComponentProps> = ({route}) => {
   useEffect(() => {
     dispatch(fetchPostsList());
   }, [dispatch]);
-  
+
   return(
     <>
       <h1>Posts</h1>
@@ -32,7 +35,7 @@ const Posts: React.FC<RouteConfigComponentProps> = ({route}) => {
       <span>{loadingIndicator && 'Fetching...'}</span>
       <br />
       {!!postListSelector.length &&
-      <ol>
+      <ol className="article-lists">
         {postListSelector.map((post) =>
         <li key={post.id}>
           <Link to={`${route?.path}/${post.id}`}>{post.title}</Link>

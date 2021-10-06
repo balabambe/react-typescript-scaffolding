@@ -26,7 +26,7 @@ const Books: React.FC<RouteConfigComponentProps> = () => {
   return(
     <>
       <span>{loadingIndicator && 'Fetching...'}</span>
-      {!!postItemSelector &&
+      {!!postItemSelector.id &&
       <ul>
         <li className="post">id: {postItemSelector.id}</li>
         <li className="post">title: {postItemSelector.title}</li>
