@@ -8,6 +8,8 @@
       "@assets/*": ["./assets/*"],
       "@images": ["./assets/images"],
       "@images/*": ["./assets/images/*"],
+      "@css": ["./css"],
+      "@css/*": ["./css/*"],
       "@pages": ["./pages"],
       "@pages/*": ["./pages/*"],
       "@components": ["./components"],

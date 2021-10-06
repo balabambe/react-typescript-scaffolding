@@ -12,6 +12,8 @@ import store from '@store/index';
 import reportWebVitals from './reportWebVitals';
 
 import './index.scss';
+import '@css/_base.scss';
+import '@css/_buttons.scss';
 
 library.add(fas);
 
