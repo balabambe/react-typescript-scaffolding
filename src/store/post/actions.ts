@@ -9,11 +9,7 @@ export const fetchPostsList = () =>
     };
 
     return apiRequest({ opts, dispatch }).then((postLists) => {
-      const dispatchConst = {
-        type: 'POST_LISTS',
-        payload: { postLists },
-      };
-      dispatch(dispatchConst);
+      dispatch({ type: 'POST_LISTS', payload: { postLists } });
     });
   };
 
@@ -24,10 +20,6 @@ export const fetchPostItem = (id: string) =>
       url: `${process.env.REACT_APP_API_URL}posts/${id}`,
     };
     return apiRequest({ opts, dispatch }).then((postItem) => {
-      const dispatchData = {
-        type: 'POST_ITEM',
-        payload: { postItem },
-      };
-      dispatch(dispatchData);
+      dispatch({ type: 'POST_ITEM', payload: { postItem } });
     });
   };
