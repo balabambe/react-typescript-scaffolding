@@ -2,6 +2,8 @@ import React from 'react';
 import { RouteComponentProps } from 'react-router';
 
 import { iconElectrics, iconHome, IconObject, iconPosts } from '@components/Icons';
+import Auth from '@layouts/Auth';
+import MainLayout from '@layouts/MainLayout';
 
 type TypeRoutes = {
   path: string;
@@ -26,14 +28,14 @@ type TypeRoutes = {
  */
 const routes: TypeRoutes[] = [
   {
-    component: React.lazy(() => import('@layouts/MainLayout')),
+    component: MainLayout,
     path: '/',
     exact: true,
     name: 'Home',
     icon: iconHome,
   },
   {
-    component: React.lazy(() => import('@layouts/MainLayout')),
+    component: MainLayout,
     path: '/posts',
     name: 'Posts',
     hideBreadcrumb: true,
@@ -67,7 +69,7 @@ const routes: TypeRoutes[] = [
     ],
   },
   {
-    component: React.lazy(() => import('@layouts/MainLayout')),
+    component: MainLayout,
     path: '/electronics',
     name: 'Electronics',
     hideBreadcrumb: true,
@@ -122,7 +124,7 @@ const routes: TypeRoutes[] = [
   },
   {
     path: '/login',
-    component: React.lazy(() => import('@layouts/Auth')),
+    component: Auth,
     hideNav: true,
   },
 ];

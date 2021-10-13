@@ -1,4 +1,4 @@
-import { StrictMode, Suspense } from 'react';
+import { StrictMode } from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 import { renderRoutes } from 'react-router-config';
@@ -21,11 +21,7 @@ render(
   <StrictMode>
     <Provider store={store}>
       <BrowserRouter>
-        <Suspense fallback={<div>Loading...</div>}>
-          <Switch>
-            {renderRoutes(routes)}
-          </Switch>
-        </Suspense>
+        <Switch>{renderRoutes(routes)}</Switch>
       </BrowserRouter>
     </Provider>
   </StrictMode>,

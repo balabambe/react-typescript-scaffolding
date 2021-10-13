@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import { RouteConfigComponentProps } from 'react-router-config';
 
 import Breadcrumbs from '@components/Breadcrumbs';
@@ -25,7 +25,9 @@ const MainLayout: React.FC<RouteConfigComponentProps> = ({ route }) => (
       </aside>
       <section className="content">
         <Breadcrumbs />
-        <RouterOutlet route={route} />
+        <Suspense fallback={<div>Loading...</div>}>
+          <RouterOutlet route={route} />
+        </Suspense>
       </section>
     </main>
   </div>
