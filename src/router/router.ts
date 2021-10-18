@@ -1,4 +1,4 @@
-import routes, { TypeRoutes } from "./router.config";
+import routes, { TypeRoutes } from './router.config';
 
 /**
  * ** Recursive function **
@@ -7,19 +7,19 @@ import routes, { TypeRoutes } from "./router.config";
  * @param currentRoute 子路由 route.routes 的內容
  * @returns 修改過的子路由
  */
+
 const combineRoutePath = (currentRoute: TypeRoutes[]): TypeRoutes[] =>
   currentRoute.map((route: TypeRoutes) => {
-    const mainPath = route.path;
-    const childrens = route.routes;
+    const { path, routes: childs } = route;
 
-    if (childrens) {
-      const childrensNewPath = childrens.map((children: TypeRoutes) => ({
-        ...children,
-        path: `${mainPath}${children.path}`,
+    if (childs) {
+      const conbinePath = childs.map((child: TypeRoutes) => ({
+        ...child,
+        path: `${path}${child.path}`,
       }));
       return {
         ...route,
-        routes: combineRoutePath(childrensNewPath), // Recursive
+        routes: combineRoutePath(conbinePath), // Recursive
       };
     }
     return route;
