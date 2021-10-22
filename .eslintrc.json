@@ -51,7 +51,7 @@
     "react/jsx-max-props-per-line": ["error", {
       "maximum": 3
     }],
-    "react/jsx-props-no-spreading": ["error", {
+    "react/jsx-props-no-spreading": ["off", {
       "custom": "ignore"
     }],
     "react/jsx-sort-props": ["error", {
