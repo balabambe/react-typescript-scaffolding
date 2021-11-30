@@ -1,5 +1,6 @@
 import React from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
+import { useHistory } from 'react-router-dom';
 
 import './Login.scoped.scss';
 
@@ -14,22 +15,25 @@ interface ILoginInfo {
 }
 
 const Login: React.FC = () => {
+  const history = useHistory();
   const { register, handleSubmit } = useForm<ILoginInfo>();
-  const onSubmit: SubmitHandler<ILoginInfo> = (data: ILoginInfo) => {
-    console.log(data);
+  const onSubmit: SubmitHandler<ILoginInfo> = (/* data: ILoginInfo */) => {
+    history.push('/');
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form className="login-wrapper" onSubmit={handleSubmit(onSubmit)}>
       <div className="login-block">
-        {Object.values(FormFields).map((item) => (
-          <label htmlFor={item} key={item}>
-            <span>{item}:</span>
-            <input id={item} {...register(item)} />
-          </label>
-        ))}
+        <h1>Account Login</h1>
+        {Object.values(FormFields).map((item) => {
+          const capitalize = `${item[0].toUpperCase()}${item.slice(1)}`;
+          return (
+            <label htmlFor={item} key={item}>
+              <input id={item} placeholder={capitalize} {...register(item)} />
+            </label>
+          );
+        })}
         <div className="btn-block">
-          <input type="reset" value="Reset" />
           <button type="submit">Login</button>
         </div>
       </div>
