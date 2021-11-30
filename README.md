@@ -17,6 +17,8 @@
 - eslint airbnb typescript
 - sass (dart-sass)
 - fontawesome
+- bootstrap 5
+- react-bootstrap 2
 
 ## Specials
 I have made for custom router-outlet by react-router-config and react-router-dom, you can just import and put the `<RouterOutlet>` component by render sub route to show sub pages.
