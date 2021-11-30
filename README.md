@@ -14,7 +14,6 @@
 - axios 0.21
 - craco-alias 3.0
 - craco-plugin-scoped-css 1.1
-- tailwindcss 2.2
 - eslint airbnb typescript
 - sass (dart-sass)
 - fontawesome
