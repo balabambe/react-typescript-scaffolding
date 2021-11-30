@@ -19,8 +19,9 @@ const MainLayout: React.FC<RouteConfigComponentProps> = ({ route }) => {
     <div className="wrapper">
       <header>
         <div className="user-block">
-          <Button className="logout" onClick={() => logout()} type="button">
+          <Button onClick={logout} type="button" variant="light">
             <Icons iconString="sign-out-alt" />
+            &nbsp;&nbsp;
             <span>Logout</span>
           </Button>
         </div>
