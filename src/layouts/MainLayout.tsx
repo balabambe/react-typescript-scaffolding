@@ -1,4 +1,5 @@
 import React, { Suspense } from 'react';
+import { Button } from 'react-bootstrap';
 import { RouteConfigComponentProps } from 'react-router-config';
 import { useHistory } from 'react-router-dom';
 
@@ -18,10 +19,10 @@ const MainLayout: React.FC<RouteConfigComponentProps> = ({ route }) => {
     <div className="wrapper">
       <header>
         <div className="user-block">
-          <button className="logout" onClick={() => logout()} type="button">
+          <Button className="logout" onClick={() => logout()} type="button">
             <Icons iconString="sign-out-alt" />
             <span>Logout</span>
-          </button>
+          </Button>
         </div>
       </header>
       <main>
