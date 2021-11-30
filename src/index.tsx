@@ -11,6 +11,7 @@ import store from '@store/index';
 
 import reportWebVitals from './reportWebVitals';
 
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.scss';
 import '@css/_base.scss';
 import '@css/_buttons.scss';
